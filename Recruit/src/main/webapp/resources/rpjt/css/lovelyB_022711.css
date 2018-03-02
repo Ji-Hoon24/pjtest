@@ -1,0 +1,79 @@
+/*!
+ * Start Bootstrap - Shop Item (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+.top_cont {
+  padding-top: 44px;
+  text-align: center;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse
+}
+
+body {
+  padding-top: 70px;
+}
+
+.top_cont {
+  padding-top: 44px;
+  text-align: center;
+}
+
+footer {
+  /* margin: 50px 0; */
+  padding: 30px 0;
+  background-color: #222;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+}
+
+.careerLine {
+  /*추천인재 ,관심인재 총 경력 테두리*/
+  border: 1px solid blue;
+  border-radius: 7px;
+}
+
+#none {
+  /* 추천인재 숨기기 */
+  display: none;
+}
+
+#inline {
+  /* 추천인재 보기 */
+  display: inline;
+}
+
+#non {
+  background-image: url("img/on.png");
+}
+
+#on {
+  background-image: url("img/off.png");
+}
+
+/* 관리자 페이지*/
+.navbar-brand-sub{
+  float:left;
+  height:50px;
+  padding:15px 15px;
+  font-size:13px;
+  line-height:20px;
+  color:#9d9d9d; 
+}
+.navbar-brand-sub:hover,
+.navbar-brand-sub:focus {
+  text-decoration: none;
+}
+.navbar-brand-sub:hover,
+.navbar-brand-sub:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+/* 관리자 페이지 끝*/
