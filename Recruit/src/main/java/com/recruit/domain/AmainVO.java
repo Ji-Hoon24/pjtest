@@ -1,9 +1,5 @@
 package com.recruit.domain;
 
-import java.util.Date;
-
-
-
 public class AmainVO {
 	
 	private String id;

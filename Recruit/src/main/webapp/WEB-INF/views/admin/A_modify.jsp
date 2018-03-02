@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@include file="../include/aheader.jsp"%>
@@ -17,12 +18,12 @@
 		<table class="table table-bordered">
 			<tr>
 				<th>ID</th>
-				<td><input class="form-control" type="text" name="id" value="${AmainVO.id}"></td>
+				<td><input class="form-control" type="text" name="id" value="${AmainVO.id}" readonly></td>
 			</tr>
 			<tr>
 				<th>비밀번호</th>
 				<td><input class="form-control" type="text" name="pw"
-					placeholder="변경할 비밀번호를 입력하세요." value="${AmainVO.pw}"></td>
+					placeholder="변경할 비밀번호를 입력하세요." value="${AmainVO.pw}" required></td>
 			</tr>
 			<tr>
 				<th>비밀번호확인</th>
@@ -31,18 +32,18 @@
 			</tr>
 			<tr>
 				<th>이름</th>
-				<td><input class="form-control" type="text" name="pname" value="${AmainVO.pname}"></td>
+				<td><input class="form-control" type="text" name="pname" value="${AmainVO.pname}" required></td>
 			</tr>
 			<tr>
 				<th>E-mail</th>
 				<td><input class="form-control" type="text" name="email"
-					value="${AmainVO.email}"></td>
+					value="${AmainVO.email}" required></td>
 			</tr>
 			<tr>
 				<th>생년월일</th>
 				<td>
 				<div class="input-group date" data-provide="datepicker">
-				<input type="text" class="form-control" value="${AmainVO.birth}">
+				<input type="text" class="form-control" name="birth" value="${AmainVO.birth}" required>
 				<span class="input-group-addon">
 				<i class="glyphicon glyphicon-calendar"></i>
 				</span>
@@ -62,7 +63,17 @@
 			<th>이력서 제목</th>
 			<th>수정</th>
 		</tr>
+		
+	<c:forEach items="${reslist}" var="ResumeVO">
+	
 		<tr>
+			<td>${ResumeVO.bno}</td>
+			<td>${ResumeVO.title}</td>
+			<td><input type="button" onclick="location.href='/admin/A_rmodify?bno=${ResumeVO.bno}'" value="이력서수정"></td>
+		</tr>
+	</c:forEach>
+	</table>
+	<!-- 	<tr>
 			<td>3</td>
 			<td>신입사원 땡땡땡입니다.</td>
 			<td><input type="button" value="수정"></td>
@@ -77,7 +88,7 @@
 			<td>신입사원 땡땡땡입니다.</td>
 			<td><input type="button" value="수정"></td>
 		</tr>
-	</table>
+	</table> -->
 </div>
 <!-- //개인정보수정 페이지 -->
 
@@ -101,6 +112,7 @@ $(function(){
 	console.log(formObj);
 	
 	$(".btn-warning").on("click", function(){
+		formObj.attr("action", "/admin/A_modify");
 		formObj.submit();
 	});
 	

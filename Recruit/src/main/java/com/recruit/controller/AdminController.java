@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.recruit.domain.AmainVO;
-import com.recruit.persistence.AmainDAO;
 import com.recruit.service.AmainService;
+import com.recruit.service.ResumeService;
 
 @Controller
 @RequestMapping("/admin/*")
@@ -22,18 +22,22 @@ public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
 	@Inject
-	private AmainService service;
+	private AmainService aservice;
+	private ResumeService rservice;
+	
 		
 	@RequestMapping(value = "/A_main", method = RequestMethod.GET)
 	public void mainGET(Model model) throws Exception {
 		logger.info("show all list.......");
-		model.addAttribute("list", service.listAll());
+		model.addAttribute("list", aservice.listAll());
 	}
 	
 	@RequestMapping(value = "/A_modify", method = RequestMethod.GET)
 	public void modifyGET(@RequestParam("id") String id, Model model) throws Exception {
-//		model.addAttribute(service.read(id));
-		model.addAttribute("AmainVO", service.read(id));
+//		model.addAttribute(rservice.read(id));
+		System.out.println(rservice.listAll(id));
+		model.addAttribute("AmainVO", aservice.read(id));
+//		model.addAttribute("reslist", rservice.listAll(id));
 	}
 	
 	
@@ -43,7 +47,7 @@ public class AdminController {
 		logger.info("modify post...........");
 		logger.info(vo.toString());
 		
-		service.modify(vo);
+		aservice.modify(vo);
 		
 		rttr.addFlashAttribute("msg", "success");
 		
@@ -53,7 +57,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	public String remove(@RequestParam("id") String id, RedirectAttributes rttr) throws Exception{
-		service.remove(id);
+		aservice.remove(id);
 		
 		rttr.addFlashAttribute("msg", "success");
 		

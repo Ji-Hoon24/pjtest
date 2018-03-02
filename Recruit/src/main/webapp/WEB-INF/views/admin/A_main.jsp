@@ -26,6 +26,7 @@
 			<td>${AmainVO.birth}</td>
 			<%-- <fmt:formatDate pattern="yyyy-MM-dd" value="${AmainVO.birth}" /> --%>
 			<td><input type="button" onclick="location.href='/admin/A_modify?id=${AmainVO.id}'" value="회원정보수정"></td>
+		</tr>
 	</c:forEach>
 			
 	</table>
