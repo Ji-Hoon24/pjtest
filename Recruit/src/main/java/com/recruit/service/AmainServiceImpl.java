@@ -6,6 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.recruit.domain.AdminCriteria;
+import com.recruit.domain.AdminSearchCriteria;
 import com.recruit.domain.AmainVO;
 import com.recruit.persistence.AmainDAO;
 
@@ -33,6 +35,26 @@ public class AmainServiceImpl implements AmainService {
 	@Override
 	public List<AmainVO> listAll() throws Exception{
 		return dao.listAll();
+	}
+	
+	@Override
+	public List<AmainVO> listCriteria(AdminCriteria cri) throws Exception{
+		return dao.listCriteria(cri);
+	}
+	
+	@Override
+	public int listCountCriteria(AdminCriteria cri) throws Exception{
+		return dao.countPaging(cri);
+	}
+	
+	@Override
+	public List<AmainVO> listSearchCriteria(AdminSearchCriteria cri) throws Exception{
+		return dao.listSearch(cri);
+	}
+	
+	@Override
+	public int listSearchCount(AdminSearchCriteria cri) throws Exception{
+		return dao.listSearchCount(cri);
 	}
 
 }

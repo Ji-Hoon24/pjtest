@@ -4,21 +4,24 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import com.recruit.domain.ResumeVO;
+import org.springframework.stereotype.Service;
+
+import com.recruit.domain.AdminResumeVO;
 import com.recruit.persistence.ResumeDAO;
 
+@Service
 public class ResumeServiceImpl implements ResumeService {
 
 	@Inject
 	private ResumeDAO dao;
 	
 	@Override
-	public ResumeVO read(String id) throws Exception{
+	public AdminResumeVO read(String id) throws Exception{
 		return dao.read(id);
 	}
 	
 	@Override
-	public void modify(ResumeVO vo) throws Exception{
+	public void modify(AdminResumeVO vo) throws Exception{
 		dao.update(vo);
 	}
 	
@@ -28,8 +31,9 @@ public class ResumeServiceImpl implements ResumeService {
 	}
 	
 	@Override
-	public List<ResumeVO> listAll(String id) throws Exception{
-		System.out.println("service : "+id);
+	public List<AdminResumeVO> listAll(String id) throws Exception{
 		return dao.listAll(id);
 	}
+
+
 }

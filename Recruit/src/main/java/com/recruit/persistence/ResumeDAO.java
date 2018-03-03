@@ -2,15 +2,15 @@ package com.recruit.persistence;
 
 import java.util.List;
 
-import com.recruit.domain.ResumeVO;
+import com.recruit.domain.AdminResumeVO;
 
 public interface ResumeDAO {
 
-	public ResumeVO read(String id) throws Exception;
+	public AdminResumeVO read(String id) throws Exception;
 	
-	public void update(ResumeVO vo) throws Exception;
+	public void update(AdminResumeVO vo) throws Exception;
 	
 	public void delete(String id) throws Exception;
 	
-	public List<ResumeVO> listAll(String id) throws Exception;
+	public List<AdminResumeVO> listAll(String id) throws Exception;
 }

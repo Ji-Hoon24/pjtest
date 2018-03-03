@@ -1,6 +1,6 @@
 package com.recruit.domain;
 
-public class ResumeVO {
+public class AdminResumeVO {
 
 	private Integer bno;
 	private String id;

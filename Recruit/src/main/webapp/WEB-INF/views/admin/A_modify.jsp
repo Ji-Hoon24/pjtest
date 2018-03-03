@@ -13,8 +13,16 @@
 
 <!-- 개인정보수정 페이지 -->
 <div class="col-md-9">
+
+
+
 	<h1>회원정보 수정</h1>
-	<form role="form" method="POST">
+	<form role="form" action="A_modify" method="POST">
+	 <input type='hidden' name='id' value="${AmainVO.id}">
+     <input type='hidden' name='page' value="${cri.page}">
+     <input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+     <input type='hidden' name='searchType' value="${cri.searchType}">
+     <input type='hidden' name='keyword' value="${cri.keyword}">
 		<table class="table table-bordered">
 			<tr>
 				<th>ID</th>
@@ -22,13 +30,15 @@
 			</tr>
 			<tr>
 				<th>비밀번호</th>
-				<td><input class="form-control" type="text" name="pw"
+				<td><input class="form-control" type="text" name="pw" id="pw"
 					placeholder="변경할 비밀번호를 입력하세요." value="${AmainVO.pw}" required></td>
 			</tr>
 			<tr>
 				<th>비밀번호확인</th>
-				<td><input class="form-control" type="text" name="pwc"
-					placeholder="비밀번호를 다시 입력하세요."></td>
+				<td><input class="form-control" type="text" name="pwc" id="pwc"
+					placeholder="비밀번호를 다시 입력하세요.">
+				<span id="pwchk"></span>				
+				</td>
 			</tr>
 			<tr>
 				<th>이름</th>
@@ -56,6 +66,8 @@
 		<input type="submit" class="btn-warning" value="수정">
 		<input type="submit" class="btn-danger" value="삭제">
 		<input type="submit" class="btn-primary" value="목록">
+		
+	<!-- 이력서 보기  -->
 	<h1>이력서 수정</h1>
 	<table class="table table-bordered">
 		<tr>
@@ -73,25 +85,11 @@
 		</tr>
 	</c:forEach>
 	</table>
-	<!-- 	<tr>
-			<td>3</td>
-			<td>신입사원 땡땡땡입니다.</td>
-			<td><input type="button" value="수정"></td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>신입사원 땡땡땡입니다.</td>
-			<td><input type="button" value="수정"></td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>신입사원 땡땡땡입니다.</td>
-			<td><input type="button" value="수정"></td>
-		</tr>
-	</table> -->
+	<!-- //이력서 보기 -->
 </div>
 <!-- //개인정보수정 페이지 -->
 
+<!-- 달력 나오게 하는 스크립트  -->
 <script type='text/javascript'>
 	$(function() {
 		$('.input-group.date').datepicker({
@@ -103,7 +101,28 @@
 		});
 	});
 </script>
+<!-- //달력 나오게 하는 스크립트  -->
 
+<!-- 비밀번호 일치 여부  -->
+<script>
+	/* keyup을 통해 비밀번호가 맞는지 확인하는 작업 */
+ 	if($('#pwc').val() != ""){
+		$('#pwc').keyup();
+	};
+	
+	$('#pwc').keyup(function(){
+		if($('#pw').val() == $('#pwc').val()){
+			document.getElementById("pwchk").innerHTML = "비밀번호가 일치합니다.";
+			$('#pwchk').val("ok");
+		}else{
+			document.getElementById("pwchk").innerHTML = "비밀번호가 일치하지 않습니다.";
+			$('#pwchk').val("no");
+		}
+	})
+</script>
+<!-- //비밀번호 일치 여부  -->
+
+<!-- 버튼에 대한 스크립트  -->
 <script type="text/javascript">
 
 $(function(){
@@ -112,19 +131,28 @@ $(function(){
 	console.log(formObj);
 	
 	$(".btn-warning").on("click", function(){
-		formObj.attr("action", "/admin/A_modify");
-		formObj.submit();
+		if($('#pwchk').val() == "ok"){
+			if(confirm("수정하시겠습니까?")){
+				formObj.submit();
+			}
+		}else{
+			alert("비밀번호를 확인해주세요.");
+		}
 	});
 	
 	$(".btn-danger").on("click", function(){
-		formObj.attr("action", "/admin/remove");
-		formObj.submit();
+		if(confirm("삭제하시겠습니까?")){
+			formObj.attr("action", "/admin/remove");
+			formObj.submit();
+		}
 	});
 	
 	$(".btn-primary").on("click", function(){
-		self.location = "/admin/A_main";
+		self.location = "/admin/A_main?page=${cri.page}&perPageNum=${cri.perPageNum}"
+			+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
 	});
 });
 </script>
+<!-- //버튼에 대한 스크립트  -->
 
 <%@include file="../include/cfooter.jsp"%>

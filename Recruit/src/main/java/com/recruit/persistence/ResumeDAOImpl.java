@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.recruit.domain.ResumeVO;
+import com.recruit.domain.AdminResumeVO;
 
 @Repository
 public class ResumeDAOImpl implements ResumeDAO {
@@ -18,12 +18,12 @@ public class ResumeDAOImpl implements ResumeDAO {
 	private static String namespace = "com.recruit.mapper.resumeMapper";
 	
 	@Override
-	public ResumeVO read(String id) throws Exception{
+	public AdminResumeVO read(String id) throws Exception{
 		return session.selectOne(namespace+".read", id);
 	}
 	
 	@Override
-	public void update(ResumeVO vo) throws Exception{
+	public void update(AdminResumeVO vo) throws Exception{
 		session.update(namespace+".update", vo);
 	}
 	
@@ -33,8 +33,7 @@ public class ResumeDAOImpl implements ResumeDAO {
 	}
 	
 	@Override
-	public List<ResumeVO> listAll(String id) throws Exception{
-		System.out.println("dao : " + id);
+	public List<AdminResumeVO> listAll(String id) throws Exception{
 		return session.selectList(namespace+".listAll", id);
 	}
 }

@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.recruit.mapper.resumeMapper">
 
-	<select id="read" resultType="com.recruit.domain.ResumeVO">
+	<select id="read" resultType="com.recruit.domain.AdminResumeVO">
 	select
 		bno, userid, title, pname, email, birth
 	from
@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from project.tbluser where id = #{id}
 	</delete>
 
-	<select id="listAll" resultType="com.recruit.domain.ResumeVO">
+	<select id="listAll" resultType="com.recruit.domain.AdminResumeVO">
 	<![CDATA[
 	select
 		bno, title

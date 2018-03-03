@@ -2,15 +2,15 @@ package com.recruit.service;
 
 import java.util.List;
 
-import com.recruit.domain.ResumeVO;
+import com.recruit.domain.AdminResumeVO;
 
 public interface ResumeService {
 
-	public ResumeVO read(String id)throws Exception;
+	public AdminResumeVO read(String id)throws Exception;
 	
-	public void modify(ResumeVO vo)throws Exception;
+	public void modify(AdminResumeVO vo)throws Exception;
 	
 	public void remove(String id)throws Exception;
 	
-	public List<ResumeVO> listAll(String id) throws Exception;
+	public List<AdminResumeVO> listAll(String id) throws Exception;
 }

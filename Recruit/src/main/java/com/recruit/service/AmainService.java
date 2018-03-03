@@ -2,6 +2,8 @@ package com.recruit.service;
 
 import java.util.List;
 
+import com.recruit.domain.AdminCriteria;
+import com.recruit.domain.AdminSearchCriteria;
 import com.recruit.domain.AmainVO;
 
 public interface AmainService {
@@ -13,4 +15,12 @@ public interface AmainService {
 	public void remove(String id)throws Exception;
 	
 	public List<AmainVO> listAll() throws Exception;
+	
+	public List<AmainVO> listCriteria(AdminCriteria cri) throws Exception;
+	
+	public int listCountCriteria(AdminCriteria cri) throws Exception;
+	
+	public List<AmainVO> listSearchCriteria(AdminSearchCriteria cri) throws Exception;
+	
+	public int listSearchCount(AdminSearchCriteria cri) throws Exception;
 }
