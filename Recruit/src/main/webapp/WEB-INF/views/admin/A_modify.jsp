@@ -36,7 +36,7 @@
 			<tr>
 				<th>비밀번호확인</th>
 				<td><input class="form-control" type="text" name="pwc" id="pwc"
-					placeholder="비밀번호를 다시 입력하세요.">
+					placeholder="비밀번호를 다시 입력하세요." required>
 				<span id="pwchk"></span>				
 				</td>
 			</tr>
@@ -107,10 +107,10 @@
 <script>
 	/* keyup을 통해 비밀번호가 맞는지 확인하는 작업 */
 
-	var pwchk = $('#pwchk');
+	var pwchk = $('#pwchk');  /* 비밀번호 일치여부 받아 줄 텍스트 */
 	
 	$('#pwc').keyup(function(){
-		if($('#pw').val() == $('#pwc').val()){
+		if($('#pw').val() == $('#pwc').val() && $('#pwc').val() != ""){
 			document.getElementById("pwchk").innerHTML = "비밀번호가 일치합니다.";
 			pwchk.attr("style", "color:blue")
 		}else{
@@ -120,7 +120,7 @@
 	})
 	
 	$('#pw').keyup(function(){
-		if($('#pw').val() == $('#pwc').val()){
+		if($('#pw').val() == $('#pwc').val() && $('#pw').val() != ""){
 			document.getElementById("pwchk").innerHTML = "비밀번호가 일치합니다.";
 			pwchk.attr("style", "color:blue")
 		}else{
@@ -143,7 +143,7 @@ $(function(){
 		var pw = $('#pw').val();
 		var pwc = $('#pwc').val();
 		
-		if(pw==pwc){
+		if(pw==pwc&&(pw!="" || pwc!="")){
 			if(confirm("수정하시겠습니까?")){
 				formObj.submit();
 			}
