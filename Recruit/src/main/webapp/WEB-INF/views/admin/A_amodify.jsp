@@ -17,12 +17,7 @@
 
 
 	<h1>회원정보 수정</h1>
-	<form role="form" action="A_modify" method="POST">
-	 <input type='hidden' name='id' value="${AmainVO.id}">
-     <input type='hidden' name='page' value="${cri.page}">
-     <input type='hidden' name='perPageNum' value="${cri.perPageNum}">
-     <input type='hidden' name='searchType' value="${cri.searchType}">
-     <input type='hidden' name='keyword' value="${cri.keyword}">
+	<form role="form" action="A_amodify" method="POST">
 		<table class="table table-bordered">
 			<tr>
 				<th>ID</th>
@@ -64,30 +59,9 @@
 		</table>
 	</form>
 		<input type="submit" class="btn btn-warning" value="수정">
-		<input type="submit" class="btn btn-danger" value="삭제">
-		<input type="submit" class="btn btn-primary" value="목록">
 		
-	<!-- 이력서 보기  -->
-	<h1>이력서 수정</h1>
-	<table class="table table-bordered">
-		<tr>
-			<th>번호</th>
-			<th>이력서 제목</th>
-			<th>수정</th>
-		</tr>
-		
-	<c:forEach items="${reslist}" var="ResumeVO">
-	
-		<tr>
-			<td>${ResumeVO.bno}</td>
-			<td>${ResumeVO.title}</td>
-			<td><input type="button" onclick="location.href='/admin/A_rmodify?bno=${ResumeVO.bno}'" value="이력서수정"></td>
-		</tr>
-	</c:forEach>
-	</table>
-	<!-- //이력서 보기 -->
 </div>
-<!-- //개인정보수정 페이지 -->
+<!-- //관리자정보수정 페이지 -->
 
 <!-- 달력 나오게 하는 스크립트  -->
 <script type='text/javascript'>
@@ -140,6 +114,7 @@ $(function(){
 	console.log(formObj);
 	
 	$(".btn-warning").on("click", function(){
+		
 		var pw = $('#pw').val();
 		var pwc = $('#pwc').val();
 		
@@ -152,17 +127,6 @@ $(function(){
 		}
 	});
 	
-	$(".btn-danger").on("click", function(){
-		if(confirm("삭제하시겠습니까?")){
-			formObj.attr("action", "/admin/remove");
-			formObj.submit();
-		}
-	});
-	
-	$(".btn-primary").on("click", function(){
-		self.location = "/admin/A_main?page=${cri.page}&perPageNum=${cri.perPageNum}"
-			+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
-	});
 });
 </script>
 <!-- //버튼에 대한 스크립트  -->

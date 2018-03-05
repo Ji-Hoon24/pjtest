@@ -74,6 +74,6 @@
 					<a href="/admin/A_main" class="list-group-item">개인관리</a>
 					<a href="#" class="list-group-item">기업관리</a>
 					<a href="#"	class="list-group-item">통계</a>
-					<a href="#" class="list-group-item">관리자정보수정</a>
+					<a href="/admin/A_amodify" class="list-group-item">관리자정보수정</a>
 				</div>
 			</div>

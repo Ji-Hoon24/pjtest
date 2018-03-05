@@ -23,4 +23,8 @@ public interface AmainService {
 	public List<AmainVO> listSearchCriteria(AdminSearchCriteria cri) throws Exception;
 	
 	public int listSearchCount(AdminSearchCriteria cri) throws Exception;
+	
+	public AmainVO aread() throws Exception;
+	
+	public void amodify(AmainVO vo) throws Exception;
 }

@@ -69,5 +69,15 @@ public class AmainDAOimpl implements AmainDAO {
 		return session.selectOne(namespace+".listSearchCount", cri);
 	}
 	
+	@Override
+	public AmainVO aread() throws Exception{
+		return session.selectOne(namespace+".aread");
+	}
+	
+	@Override
+	public void aupdate(AmainVO vo) throws Exception{
+		session.update(namespace + ".aupdate", vo);
+	}
+	
 	
 }

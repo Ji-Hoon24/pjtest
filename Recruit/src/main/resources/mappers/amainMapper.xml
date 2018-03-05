@@ -113,4 +113,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
+	<select id="aread" resultType="com.recruit.domain.AmainVO">
+	select
+		id, pw, pname, email, birth
+	from
+		project.tbluser
+	where id = 'admin'
+	</select>
+	
+	<update id="aupdate">
+		update project.tbluser set
+		pw = #{pw}, pname = #{pname}, email = #{email}, birth = #{birth}
+		where id = 'admin'
+	</update>
 </mapper>

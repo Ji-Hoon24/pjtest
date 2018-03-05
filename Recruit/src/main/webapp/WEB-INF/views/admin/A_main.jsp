@@ -89,7 +89,9 @@ var result = '${msg}';
 if(result == 'modify'){
 	alert("수정 처리가 완료 되었습니다.");
 }else if(result == 'remove'){
-	alert(".삭제가 완료 되었습니다.");
+	alert("삭제가 완료 되었습니다.");
+}else if(result == 'amodify'){
+	alert("관리자 정보가 수정 되었습니다.");
 }
 </script>
 <!-- //수정, 삭제 처리시 -->

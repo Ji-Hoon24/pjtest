@@ -85,4 +85,23 @@ public class AdminController {
 		
 		return "redirect:/admin/A_main";
 	}
+	
+	@RequestMapping(value = "/A_amodify", method = RequestMethod.GET)
+	public void amodifyGET(Model model) throws Exception {
+		model.addAttribute("AmainVO", aservice.aread());
+	}
+	
+	@RequestMapping(value = "/A_amodify", method = RequestMethod.POST)
+	public String amodifyPOST(AmainVO vo, RedirectAttributes rttr) throws Exception {
+	
+		logger.info("modify post...........");
+		logger.info(vo.toString());
+		
+		aservice.amodify(vo);
+		
+		rttr.addFlashAttribute("msg", "amodify");
+		
+		
+		return "redirect:/admin/A_main";
+	}
 }

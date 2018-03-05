@@ -56,5 +56,15 @@ public class AmainServiceImpl implements AmainService {
 	public int listSearchCount(AdminSearchCriteria cri) throws Exception{
 		return dao.listSearchCount(cri);
 	}
+	
+	@Override
+	public AmainVO aread() throws Exception{
+		return dao.aread();
+	}
+	
+	@Override
+	public void amodify(AmainVO vo) throws Exception{
+		dao.aupdate(vo);
+	}
 
 }

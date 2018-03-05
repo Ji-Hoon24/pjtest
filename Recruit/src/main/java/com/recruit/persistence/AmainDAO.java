@@ -25,4 +25,8 @@ public interface AmainDAO {
 	public List<AmainVO> listSearch(AdminSearchCriteria cri) throws Exception;
 	
 	public int listSearchCount(AdminSearchCriteria cri) throws Exception;
+	
+	public AmainVO aread() throws Exception;
+	
+	public void aupdate(AmainVO vo) throws Exception;
 }
