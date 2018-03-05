@@ -154,7 +154,7 @@ $(function(){
 	
 	$(".btn-danger").on("click", function(){
 		if(confirm("삭제하시겠습니까?")){
-			formObj.attr("action", "/admin/remove");
+			formObj.attr("action", "/admin/premove");
 			formObj.submit();
 		}
 	});

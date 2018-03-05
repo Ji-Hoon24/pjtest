@@ -75,5 +75,7 @@
 					<a href="#" class="list-group-item">기업관리</a>
 					<a href="#"	class="list-group-item">통계</a>
 					<a href="/admin/A_amodify" class="list-group-item">관리자정보수정</a>
+					<a href="/admin/A_faq" class="list-group-item">FAQ</a>
+					<a href="/admin/A_qna" class="list-group-item">Q&A</a>
 				</div>
 			</div>

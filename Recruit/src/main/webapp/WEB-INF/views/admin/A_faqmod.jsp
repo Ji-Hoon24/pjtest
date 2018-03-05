@@ -36,6 +36,7 @@
 	</form>
 	
 	<input type="submit" class="btn btn-warning" value="수정">
+	<input type="submit" class="btn btn-danger" value="삭제">
 	<input type="submit" class="btn btn-primary" value="목록">
 		
 </div>
@@ -54,8 +55,15 @@ $(".btn-warning").on("click", function(){
 	}
 });
 
+$(".btn-danger").on("click", function(){
+	if(confirm("삭제하시겠습니까?")){
+		formObj.attr("action", "/admin/sremove");
+		formObj.submit();
+	}
+});
+
 $(".btn-primary").on("click", function(){
-	self.location = "/cs/S_faq";
+	self.location = "/admin/A_faq";
 });
 
 </script>

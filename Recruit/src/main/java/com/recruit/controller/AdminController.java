@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.recruit.domain.AdminPageMaker;
 import com.recruit.domain.AdminSearchCriteria;
 import com.recruit.domain.AmainVO;
-import com.recruit.domain.AdminPageMaker;
+import com.recruit.domain.CsfaqVO;
 import com.recruit.service.AmainService;
+import com.recruit.service.CsfaqService;
 import com.recruit.service.ResumeService;
 
 @Controller
@@ -30,6 +32,8 @@ public class AdminController {
 	@Inject
 	private ResumeService rservice;
 	
+	@Inject
+	private CsfaqService fservice;
 		
 	@RequestMapping(value = "/A_main", method = RequestMethod.GET)
 	public void mainGET(@ModelAttribute("cri") AdminSearchCriteria cri, Model model) throws Exception {
@@ -77,7 +81,7 @@ public class AdminController {
 		return "redirect:/admin/A_main";
 	}
 	
-	@RequestMapping(value = "/remove", method = RequestMethod.POST)
+	@RequestMapping(value = "/premove", method = RequestMethod.POST)
 	public String remove(@RequestParam("id") String id, RedirectAttributes rttr) throws Exception{
 		aservice.remove(id);
 		
@@ -103,5 +107,55 @@ public class AdminController {
 		
 		
 		return "redirect:/admin/A_main";
+	}
+	
+	@RequestMapping(value = "/A_faq", method = RequestMethod.GET)
+	public void faqGET(Model model) throws Exception {
+		logger.info("faq..........");
+		model.addAttribute("list", fservice.listAll());
+	}
+	
+	@RequestMapping(value = "/A_faqreg", method = RequestMethod.GET)
+	public void faqRegisterGET(Model model) throws Exception {
+		logger.info("faq Register..........");
+	}
+	
+	@RequestMapping(value = "/A_faqreg", method = RequestMethod.POST)
+	public String faqRegisterPOST(CsfaqVO vo, RedirectAttributes rttr) throws Exception {
+		logger.info("faq Register..........");
+		logger.info(vo.toString());
+		
+		fservice.regist(vo);
+		
+		rttr.addFlashAttribute("msg", "regist");
+		
+		return "redirect:/admin/A_faq";
+	}
+	
+	@RequestMapping(value = "/sremove", method = RequestMethod.POST)
+	public String remove(@RequestParam("bno") Integer bno, RedirectAttributes rttr) throws Exception{
+		fservice.remove(bno);
+		
+		rttr.addFlashAttribute("msg", "remove");
+		
+		return "redirect:/admin/A_faq";
+	}
+	
+	@RequestMapping(value = "/A_faqmod", method = RequestMethod.GET)
+	public void faqModifyGET(@RequestParam("bno") Integer bno, Model model) throws Exception {
+		logger.info("faq Modify Get..........");
+		model.addAttribute("CsfaqVO", fservice.read(bno));
+	}
+	
+	@RequestMapping(value = "/A_faqmod", method = RequestMethod.POST)
+	public String faqModifyPOST(CsfaqVO vo, RedirectAttributes rttr) throws Exception {
+		logger.info("faq Modify Post..........");
+		logger.info(vo.toString());
+		
+		fservice.modify(vo);
+		
+		rttr.addFlashAttribute("msg", "modify");
+		
+		return "redirect:/admin/A_faq";
 	}
 }
