@@ -16,6 +16,8 @@ import com.recruit.domain.AdminPageMaker;
 import com.recruit.domain.AdminSearchCriteria;
 import com.recruit.domain.AmainVO;
 import com.recruit.domain.CsfaqVO;
+import com.recruit.domain.CsqnaCriteria;
+import com.recruit.domain.CsqnaPageMaker;
 import com.recruit.domain.CsqnaVO;
 import com.recruit.service.AmainService;
 import com.recruit.service.CsfaqService;
@@ -165,9 +167,16 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/A_qna", method = RequestMethod.GET)
-	public void qnaGET(Model model) throws Exception {
+	public void qnaGET(@ModelAttribute("cri") CsqnaCriteria cri, Model model) throws Exception {
 		logger.info("qna get..........");
-		model.addAttribute("list", qservice.listAll());
+//		model.addAttribute("list", qservice.listAll());
+		model.addAttribute("list", qservice.listCriteria(cri));
+		CsqnaPageMaker pageMaker = new CsqnaPageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(qservice.listCountCriteria(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	
 	@RequestMapping(value = "/A_qnamod", method = RequestMethod.GET)

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.recruit.domain.CsqnaCriteria;
 import com.recruit.domain.CsqnaVO;
 import com.recruit.persistence.CsqnaDAO;
 
@@ -46,5 +47,14 @@ public class CsqnaServiceImpl implements CsqnaService {
 		return dao.listAll();
 	}
 
+	@Override
+	public int listCountCriteria(CsqnaCriteria cri) throws Exception{
+		return dao.countPaging(cri);
+	}
+	
+	@Override
+	public List<CsqnaVO> listCriteria(CsqnaCriteria cri) throws Exception{
+		return dao.listCriteria(cri);
+	}
 
 }

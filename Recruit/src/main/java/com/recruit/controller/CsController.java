@@ -6,12 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.recruit.domain.CsfaqVO;
+import com.recruit.domain.CsqnaCriteria;
+import com.recruit.domain.CsqnaPageMaker;
 import com.recruit.domain.CsqnaVO;
 import com.recruit.service.CsfaqService;
 import com.recruit.service.CsqnaService;
@@ -59,9 +62,15 @@ private static final Logger logger = LoggerFactory.getLogger(AdminController.cla
 	}
 	
 	@RequestMapping(value = "/S_qna", method = RequestMethod.GET)
-	public void qnaGET(Model model) throws Exception {
+	public void qnaGET(@ModelAttribute("cri") CsqnaCriteria cri, Model model) throws Exception {
 		logger.info("qna..........");
-		model.addAttribute("list", qservice.listAll());
+		model.addAttribute("list", qservice.listCriteria(cri));
+		CsqnaPageMaker pageMaker = new CsqnaPageMaker();
+		pageMaker.setCri(cri);
+		
+		pageMaker.setTotalCount(qservice.listCountCriteria(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	
 	@RequestMapping(value = "/S_qnareg", method = RequestMethod.GET)

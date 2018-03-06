@@ -57,3 +57,25 @@ footer {
 #on {
   background-image: url("img/off.png");
 }
+
+/* 관리자 페이지*/
+/* .navbar-brand-sub{
+  float:left;
+  height:50px;
+  padding:15px 15px;
+  font-size:13px;
+  line-height:20px;
+  color:#9d9d9d; 
+}
+
+.navbar-brand-sub:hover,
+.navbar-brand-sub:focus {
+  text-decoration: none;
+}
+
+.navbar-brand-sub:hover,
+.navbar-brand-sub:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+} */
+/* 관리자 페이지 끝*/

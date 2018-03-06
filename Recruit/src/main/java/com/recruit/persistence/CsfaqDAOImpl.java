@@ -41,4 +41,5 @@ public class CsfaqDAOImpl implements CsfaqDAO {
 	public List<CsfaqVO> listAll() throws Exception{
 		return session.selectList(namespace+".listAll");
 	}
+
 }

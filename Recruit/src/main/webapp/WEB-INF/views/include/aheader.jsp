@@ -25,6 +25,29 @@
     <![endif]-->
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<style>
+/* 관리자 페이지*/
+.navbar-brand-sub{
+  float:left;
+  height:50px;
+  padding:15px 15px;
+  font-size:13px;
+  line-height:20px;
+  color:#9d9d9d; 
+}
+
+.navbar-brand-sub:hover,
+.navbar-brand-sub:focus {
+  text-decoration: none;
+}
+
+.navbar-brand-sub:hover,
+.navbar-brand-sub:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+/* 관리자 페이지 끝*/
+</style>
 </head>
 
 <body>
@@ -40,8 +63,8 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">퍼팩트 매칭</a> <sub><a
-					href="/admin/A_main" class="navbar-brand-sub">관리자 페이지</a></sub>
+				<a class="navbar-brand" href="#">퍼팩트 매칭</a>
+				<sub><a	href="/admin/A_main"><span class="navbar-brand-sub">관리자 페이지</span></a></sub>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"

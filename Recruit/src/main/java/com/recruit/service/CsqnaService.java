@@ -2,6 +2,7 @@ package com.recruit.service;
 
 import java.util.List;
 
+import com.recruit.domain.CsqnaCriteria;
 import com.recruit.domain.CsqnaVO;
 
 public interface CsqnaService {
@@ -17,4 +18,9 @@ public interface CsqnaService {
 	public void remove(Integer bno) throws Exception;
 	
 	public List<CsqnaVO> listAll() throws Exception;
+	
+	public int listCountCriteria(CsqnaCriteria cri) throws Exception;
+	
+	public List<CsqnaVO> listCriteria(CsqnaCriteria cri) throws Exception;
+	
 }
