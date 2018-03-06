@@ -16,8 +16,10 @@ import com.recruit.domain.AdminPageMaker;
 import com.recruit.domain.AdminSearchCriteria;
 import com.recruit.domain.AmainVO;
 import com.recruit.domain.CsfaqVO;
+import com.recruit.domain.CsqnaVO;
 import com.recruit.service.AmainService;
 import com.recruit.service.CsfaqService;
+import com.recruit.service.CsqnaService;
 import com.recruit.service.ResumeService;
 
 @Controller
@@ -34,6 +36,9 @@ public class AdminController {
 	
 	@Inject
 	private CsfaqService fservice;
+	
+	@Inject
+	private CsqnaService qservice;
 		
 	@RequestMapping(value = "/A_main", method = RequestMethod.GET)
 	public void mainGET(@ModelAttribute("cri") AdminSearchCriteria cri, Model model) throws Exception {
@@ -157,5 +162,38 @@ public class AdminController {
 		rttr.addFlashAttribute("msg", "modify");
 		
 		return "redirect:/admin/A_faq";
+	}
+	
+	@RequestMapping(value = "/A_qna", method = RequestMethod.GET)
+	public void qnaGET(Model model) throws Exception {
+		logger.info("qna get..........");
+		model.addAttribute("list", qservice.listAll());
+	}
+	
+	@RequestMapping(value = "/A_qnamod", method = RequestMethod.GET)
+	public void qnaModifyGET(@RequestParam("bno") Integer bno, Model model) throws Exception {
+		logger.info("qna Modify Get..........");
+		model.addAttribute("CsqnaVO", qservice.modread(bno));
+	}
+	
+	@RequestMapping(value = "/A_qnamod", method = RequestMethod.POST)
+	public String qnaModifyPOST(CsqnaVO vo, RedirectAttributes rttr) throws Exception {
+		logger.info("qna Modify Post..........");
+		logger.info(vo.toString());
+		
+		qservice.modify(vo);
+		
+		rttr.addFlashAttribute("msg", "modify");
+		
+		return "redirect:/admin/A_qna";
+	}
+	
+	@RequestMapping(value = "/qremove", method = RequestMethod.POST)
+	public String qnaremove(@RequestParam("bno") Integer bno, RedirectAttributes rttr) throws Exception{
+		fservice.remove(bno);
+		
+		rttr.addFlashAttribute("msg", "remove");
+		
+		return "redirect:/admin/A_qna";
 	}
 }

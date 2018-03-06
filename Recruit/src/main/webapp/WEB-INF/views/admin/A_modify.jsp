@@ -153,9 +153,16 @@ $(function(){
 	});
 	
 	$(".btn-danger").on("click", function(){
-		if(confirm("삭제하시겠습니까?")){
-			formObj.attr("action", "/admin/premove");
-			formObj.submit();
+		var pw = $('#pw').val();
+		var pwc = $('#pwc').val();
+		
+		if(pw==pwc&&(pw!="" || pwc!="")){
+			if(confirm("삭제하시겠습니까?")){
+				formObj.attr("action", "/admin/premove");
+				formObj.submit();
+			}
+		}else{
+			alert("비밀번호를 확인해주세요.");
 		}
 	});
 	

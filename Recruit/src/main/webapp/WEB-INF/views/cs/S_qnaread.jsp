@@ -15,23 +15,36 @@
 
 
 
-	<h1>FAQ</h1>	
+	<h1>Q&A</h1>	
 	<form role="form" method="POST">
-		<table class="table table-bordered">
-			<tr>
-				<th>제목</th>
-				<td><input class="form-control" type="text" name="title"
-					value="${CsfaqVO.title}"></td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td><textarea class="form-control" name="content" >${CsfaqVO.content}</textarea>
-				</td>
-			</tr>
-		</table>
+		<input class="form-control" type="hidden" name="bno" value="${CsqnaVO.bno}" readonly>
 	</form>
+	<table class="table table-bordered">
+		<tr>
+			<th>제목</th>
+		</tr>
+		<tr>
+			<td><input class="form-control" type="text" name="title"
+				value="${CsqnaVO.title}" readonly></td>
+		</tr>
+		<tr>
+			<th>아이디</th>
+		</tr>
+		<tr>
+			<td><input class="form-control" type="text" name="user"
+				value="${CsqnaVO.user}" readonly></td>
+		</tr>
+		<tr>
+			<th>내용</th>
+		</tr>
+		<tr>
+			<td><textarea class="form-control" name="content" 
+			readonly>${CsqnaVO.content}</textarea></td>
+		</tr>
+	</table>
 	
-	<input type="submit" class="btn btn-warning" value="등록">
+	<input type="submit" class="btn btn-warning" value="수정">
+	<input type="submit" class="btn btn-danger" value="삭제">
 	<input type="submit" class="btn btn-primary" value="목록">
 		
 </div>
@@ -45,13 +58,22 @@ var formObj = $("form[role='form']");
 console.log(formObj);
 
 $(".btn-warning").on("click", function(){
-	if(confirm("등록할랭?")){
+	if(confirm("수정할랭?")){
+		formObj.attr("action", "/cs/S_qnamod");
+		formObj.attr("method", "GET");
+		formObj.submit();
+	}
+});
+
+$(".btn-danger").on("click", function(){
+	if(confirm("삭제하시겠습니까?")){
+		formObj.attr("action", "/cs/qremove");
 		formObj.submit();
 	}
 });
 
 $(".btn-primary").on("click", function(){
-	self.location = "/admin/A_faq";
+	self.location = "/cs/S_qna";
 });
 
 </script>
