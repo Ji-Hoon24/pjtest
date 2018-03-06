@@ -12,21 +12,22 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+<!-- 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://192.168.0.4:3306/project?useSSL=false"></property>
+		<property name="username" value="mely"></property>
+		<property name="password" value="0000"></property>
+	</bean> -->
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<property name="url" value="jdbc:log4jdbc:mysql://192.168.0.4:3306/project?useSSL=false"></property>
-		<property name="username" value="ojh"></property>
+		<property name="username" value="ahn"></property>
 		<property name="password" value="0000"></property>
 	</bean>
- 	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	
-		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="url" value="jdbc:log4jdbc:mysql://localhost:3306/project?useSSL=false"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value="1234"></property>
-	</bean> -->
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
@@ -34,13 +35,15 @@
 		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
 	</bean>
 	
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
-		destroy-method="clearCache">
-		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate" destroy-method = "clearCache">
+	<constructor-arg name = "sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
-	<context:component-scan base-package="com.recruit.persistence"/>
-	<context:component-scan base-package="com.recruit.service"/>
+	<context:component-scan base-package="com.recruit.persistence"></context:component-scan>
+	<!-- p136에서 추가 p176에서 중간 전체확인 -->
+	
+	<context:component-scan base-package="com.recruit.service"></context:component-scan>
 	
 </beans>
 
@@ -48,4 +51,3 @@
 <!-- v0.3 MyBatis 연결 -->
 <!-- <context:component-scan base-package="org.zerock.persistence"/> p.136참고 -->
 <!-- v0.4 log4jdbc로 수정(자세한 로그를 보기 위해서 P.138참고) -->
-<!-- v0.5 context:componet-scan 추가, sqlSession추가, sqlSessionFactory에 mapperLocations 추가 -->

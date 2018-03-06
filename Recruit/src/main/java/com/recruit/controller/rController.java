@@ -77,5 +77,4 @@ public class rController {
 	public String favorGET(CinfoVO cinfo, Model model) throws Exception {
 		return "rpjt/C_favor";
 	}
-	
 }

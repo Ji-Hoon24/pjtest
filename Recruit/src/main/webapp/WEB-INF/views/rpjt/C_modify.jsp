@@ -3,6 +3,11 @@
 
 <%@include file="../include/cheader.jsp"%>
 
+<!-- picker : https://lalwr.blogspot.kr/2016/04/bootstrap-datepicker.html -->
+<link rel="stylesheet" type="text/css" href="/resources/rpjt/datepicker/datepicker3.css" />
+<script type="text/javascript" src="/resources/rpjt/datepicker/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/resources/rpjt/datepicker/bootstrap-datepicker.kr.js"></script>
+
 <!-- Main content -->
 <!-- 기업 페이지 -->
 <div class="col-md-9">
