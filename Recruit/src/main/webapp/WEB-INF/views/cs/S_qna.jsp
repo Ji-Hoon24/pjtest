@@ -17,10 +17,10 @@
 			<th>조회수</th>
 		</tr>		
 	<c:forEach items="${list}" var="CsqnaVO">
-		<input class="form-control" type="hidden" name="bpw" value="${CsqnaVO.bpw}" readonly>
+		<input class="bpw form-control" type="hidden" value="${CsqnaVO.bpw}" readonly>
 		<tr>
 			<td>${CsqnaVO.bno}</td>
-			<td><a id="bpwc" href='/cs/S_qnaread?bno=${CsqnaVO.bno}'>${CsqnaVO.title}</a></td>
+			<td><a class="bpwc" href='/cs/S_qnaread?bno=${CsqnaVO.bno}'>${CsqnaVO.title}</a></td>
 			<td>${CsqnaVO.user}</td>
 			<td>${CsqnaVO.regdate }</td>
 			<td><span class="badge bg-red">${CsqnaVO.viewcnt }</span></td>
@@ -61,16 +61,19 @@ var formObj = $("form[role='form']");
 
 console.log(formObj);
 
-$("#bpwc").on("click", function(){
-	var bpw = $('#bpw').val();
-	var bpwchk = $('#bpwc');
+$(".bpwc").on("click", function(){
+	var bpw = $('.bpw').val();
+	var bpwc = $('.bpwc');
+		console.log("bpw : "+bpw);
+		console.log("bpwc : "+bpwc);
 	
 	if(bpw != ""){
 		var bpwchk = prompt("비밀번호를 입력해주세요.");
+		console.log("bpwchk : "+bpwchk);
 		if(bpw != bpwchk){
 			alert("비밀번호가 일치하지않습니다.");
-			/* bpwchk.attr("href", "/cs/S_qna"); */
-			self.location = "/cs/S_qna";
+			bpwc.attr("href", "/cs/S_qna");
+			/* location.href = "/cs/S_qna"; */
 		}
 	}
 		
